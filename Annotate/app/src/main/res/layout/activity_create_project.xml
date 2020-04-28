@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="200dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvLoad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_horizontal"
+        android:text="Loading...please wait..."
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvtittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_horizontal"
+                android:text="Enter Details for Dataset"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/ettittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:hint="Enter tittle for Dataset"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etdescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:hint="Enter Description for the Datset Required of 100 words"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etdatasetsize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:hint="Required size of the data set"
+                android:inputType="number"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etuploaddataurl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:hint="Editable Drivelink to upload a dataset"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etitems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:hint="Comma Seperated Strings of the items to annotate a images"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btncreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/buttons"
+                android:text="Create"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/colorPrimaryLight"-->
+<!--    tools:context=".CreateProject">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvtittle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:text="Enter Details for Dataset"-->
+<!--            android:textColor="@color/colorPrimaryDark"-->
+<!--            android:textSize="28sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/ettittle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:ems="10"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:hint="Enter tittle for Dataset"-->
+<!--            android:inputType="textMultiLine"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etdescription"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:ems="10"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:hint="Enter Description for the Datset Required of 100 words"-->
+<!--            android:inputType="textMultiLine"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etdatasetsize"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:ems="10"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:hint="Required size of the data set"-->
+<!--            android:inputType="number"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etuploaddataurl"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:ems="10"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:hint="Editable Drivelink to upload a dataset"-->
+<!--            android:inputType="textMultiLine"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etitems"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:ems="10"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:hint="Comma Seperated Strings of the items to annotate a images"-->
+<!--            android:inputType="textMultiLine"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btncreate"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:background="@drawable/buttons"-->
+<!--            android:text="Create"-->
+<!--            android:textStyle="bold" />-->
+<!--    </LinearLayout>-->
+
+<!--</ScrollView>-->
