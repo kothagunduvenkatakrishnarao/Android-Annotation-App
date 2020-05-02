@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Projects
 {
-    private Long projectId;
+    private int projectId;
     private String projectName;
     private String description;
     private String dataToShow;
@@ -14,12 +14,21 @@ public class Projects
     private String userEmail;
     private int remainingCount;
     private Date created;
+    private String objectId;
 
-    public Long getProjectId() {
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Long projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 

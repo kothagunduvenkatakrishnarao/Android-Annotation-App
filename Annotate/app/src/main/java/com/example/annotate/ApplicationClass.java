@@ -5,6 +5,7 @@ import android.app.Application;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ApplicationClass  extends Application {
@@ -14,6 +15,9 @@ public class ApplicationClass  extends Application {
     public static BackendlessUser user;
     public static List<Projects> projects;
     public static List<UserScore> userData;
+    public static List<Projects> adminpprojects;
+    public static List<Projects> userprojects;
+    public static HashSet<Long> userenrolledprojectids;
     @Override
     public void onCreate(){
         super.onCreate();

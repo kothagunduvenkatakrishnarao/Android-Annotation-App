@@ -8,6 +8,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 import com.backendless.persistence.local.UserIdStorageFactory;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
@@ -45,7 +47,6 @@ public class Login extends AppCompatActivity {
         btnRegister=findViewById(R.id.btnRegister);
         tvReset=findViewById(R.id.tvReset);
         showProgress(true);
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,8 +65,9 @@ public class Login extends AppCompatActivity {
                             ApplicationClass.user= response;
                             Toast.makeText(Login.this,"Login successfull!",Toast.LENGTH_LONG).show();
                             fetchFullData();
-                            fetchParticularUserData();
+//                            fetchParticularUserData();
                             startActivity(new Intent(Login.this, MainActivity.class));
+                            showProgress(false);
                             Login.this.finish();
                         }
 
@@ -119,14 +121,15 @@ public class Login extends AppCompatActivity {
                 if(response)
                 {
                     String userObjectId = UserIdStorageFactory.instance().getStorage().get();
-
                     Backendless.Data.of(BackendlessUser.class).findById(userObjectId, new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
                             ApplicationClass.user = response;
+                            Log.i("email",""+ApplicationClass.user.getEmail());
+                            showProgress(true);
                             fetchFullData();
-                            fetchParticularUserData();
-                            startActivity(new Intent(Login.this,MainActivity.class));
+                            startActivity(new Intent(Login.this, MainActivity.class));
+                            showProgress(false);
                             Login.this.finish();
                         }
 
@@ -193,12 +196,11 @@ public class Login extends AppCompatActivity {
         DataQueryBuilder queryBuilder = DataQueryBuilder.create();
         queryBuilder.setPageSize(100);
         queryBuilder.addAllProperties();
-        queryBuilder.setSortBy("projectId DESC");
-        Backendless.Data.of(Projects.class).find(queryBuilder, new AsyncCallback<List<Projects>>() {
+        queryBuilder.setSortBy("created DESC");
+        Backendless.Persistence.of(Projects.class).find(queryBuilder, new AsyncCallback<List<Projects>>() {
             @Override
             public void handleResponse(List<Projects> response) {
                 ApplicationClass.projects=response;
-                showProgress(false);
             }
             @Override
             public void handleFault(BackendlessFault fault) {
@@ -206,20 +208,26 @@ public class Login extends AppCompatActivity {
                 showProgress(false);
             }
         });
-    }
-    public void fetchParticularUserData()
-    {
-        showProgress(true);
-        DataQueryBuilder queryBuilder = DataQueryBuilder.create();
+        queryBuilder = DataQueryBuilder.create();
         String whereClause =  "userEmail = '"+ ApplicationClass.user.getEmail() +"'";
         queryBuilder.setWhereClause(whereClause);
-        Backendless.Data.of(UserScore.class).find(queryBuilder, new AsyncCallback<List<UserScore>>() {
+        Backendless.Persistence.of(UserScore.class).find(queryBuilder, new AsyncCallback<List<UserScore>>() {
             @Override
             public void handleResponse(List<UserScore> response) {
                 ApplicationClass.userData=response;
-                if(response.size()!=0) Log.i("User Data",""+response.get(0).getEnrolledProjects());
-                else Log.i("User Data w","unable to retrive");
-                showProgress(false);
+                if(response.size()!=0)
+                {
+                    Log.i("User Data ",""+response.get(0).getEnrolledProjects());
+                    HashSet<Long> set=new HashSet<>();
+                    String[] ids=ApplicationClass.userData.get(0).getEnrolledProjects().split(",");
+                    for(int i=0;i<ids.length;i++)
+                    {
+                        set.add(Long.parseLong(ids[i]));
+                    }
+                    ApplicationClass.userenrolledprojectids=set;
+                    Log.i("set",""+set);
+                }
+                else Log.i("User Data ","unable to retrive");
             }
 
             @Override

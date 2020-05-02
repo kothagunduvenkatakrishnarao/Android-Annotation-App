@@ -123,6 +123,17 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/uploadjson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/buttons"
+                android:text="upload jsoon file"
+                android:textStyle="bold" />
+
+            <Button
                 android:id="@+id/btncreate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

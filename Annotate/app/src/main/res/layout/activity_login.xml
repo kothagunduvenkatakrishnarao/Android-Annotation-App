@@ -104,7 +104,7 @@
             android:layout_marginTop="10dp"
             android:clickable="true"
             android:gravity="center_horizontal"
-            android:text="Forget Password? Reset here"
+            android:text="Forgot Password? Reset here"
             android:textColor="#0000b2" />
     </LinearLayout>
 

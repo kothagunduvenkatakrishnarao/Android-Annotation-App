@@ -92,7 +92,7 @@ public class Register extends AppCompatActivity {
         score.setUserEmail(ApplicationClass.user.getEmail());
         score.setEnrolledProjects("");
         score.setScore(0.0);
-        Backendless.Data.save(score, new AsyncCallback<UserScore>() {
+        Backendless.Data.of(UserScore.class).save(score, new AsyncCallback<UserScore>() {
             @Override
             public void handleResponse(UserScore response) {
                 Toast.makeText(Register.this,"unable to create",Toast.LENGTH_LONG).show();

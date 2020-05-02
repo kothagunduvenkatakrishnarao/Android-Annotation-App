@@ -1,6 +1,7 @@
 package com.example.annotate;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,9 +58,18 @@ public class DisplayUserProjects extends AppCompatActivity {
                 }
             }
         }
+        ApplicationClass.userprojects=userprojects;
         adapter = new ProjectUserAdapter(DisplayUserProjects.this,userprojects);
         listprojects.setAdapter(adapter);
         showProgress(false);
+        listprojects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(DisplayUserProjects.this,Annotate.class);
+                intent.putExtra("position",position);
+                startActivity(intent);
+            }
+        });
     }
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {

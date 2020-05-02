@@ -3,8 +3,11 @@ package com.example.annotate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,14 +25,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(MainActivity.this,"Please wait for 5 seconds!",Toast.LENGTH_LONG).show();
         btnadmin=findViewById(R.id.btnadmin);
         btnuser=findViewById(R.id.btnuser);
         btncreate=findViewById(R.id.btncreate);
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,CreateProject.class));
-
+                Intent intent=new Intent(MainActivity.this,CreateProject.class);
+                startActivity(intent);
             }
         });
         btnadmin.setOnClickListener(new View.OnClickListener() {
@@ -78,4 +82,26 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+//    public Integer getId()
+//    {
+//        final Integer[] id = new Integer[1];
+//        AsyncCallback<Integer> callback = new AsyncCallback<Integer>()
+//        {
+//            @Override
+//            public void handleResponse( Integer value )
+//            {
+//                Log.i( "MYAPP", "[ASYNC] current counter value is - " + value );
+//                id[0] = value;
+//                return;
+//            }
+//
+//            @Override
+//            public void handleFault( BackendlessFault backendlessFault )
+//            {
+//                Log.e( "MYAPP", "Error - " + backendlessFault.getMessage() );
+//            }
+//        };
+//        Backendless.Counters.incrementAndGet( "projectid", callback);
+//        return id[0];
+//    }
 }

@@ -1,6 +1,7 @@
 package com.example.annotate;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +41,14 @@ public class DisplayAdminProjects extends AppCompatActivity {
         mProgressView= findViewById(R.id.login_progress);
         tvLoad= findViewById(R.id.tvLoad);
         listprojects=findViewById(R.id.listprojects);
+        listprojects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(DisplayAdminProjects.this,ProjectInfo.class);
+                intent.putExtra("position",position);
+                startActivity(intent);
+            }
+        });
         showProgress(true);
         List<Projects>  adminprojects = new ArrayList<>();
         for(int i=0;i<ApplicationClass.projects.size();i++)
@@ -48,10 +58,12 @@ public class DisplayAdminProjects extends AppCompatActivity {
                 adminprojects.add(ApplicationClass.projects.get(i));
             }
         }
+        ApplicationClass.adminpprojects=adminprojects;
         adapter= new ProjectAdminAdapter(DisplayAdminProjects.this,adminprojects);
         listprojects.setAdapter(adapter);
         showProgress(false);
     }
+
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
 
@@ -115,6 +127,9 @@ public class DisplayAdminProjects extends AppCompatActivity {
                         Toast.makeText(DisplayAdminProjects.this,"Error "+fault.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });
+                break;
+            case R.id.showallprojects:
+                startActivity(new Intent(DisplayAdminProjects.this,DisplayAllProjects.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

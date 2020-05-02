@@ -1,6 +1,7 @@
 package com.example.annotate;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +22,6 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.backendless.persistence.DataQueryBuilder;
-
-import java.util.List;
 
 
 public class DisplayAllProjects extends AppCompatActivity {
@@ -44,6 +43,14 @@ public class DisplayAllProjects extends AppCompatActivity {
         mProgressView= findViewById(R.id.login_progress);
         tvLoad= findViewById(R.id.tvLoad);
         listprojects=findViewById(R.id.listprojects);
+        listprojects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(DisplayAllProjects.this,DisplayAllProjectsInfo.class);
+                intent.putExtra("position",position);
+                startActivity(intent);
+            }
+        });
         adapter = new ProjectsAdapter(DisplayAllProjects.this,ApplicationClass.projects );
         listprojects.setAdapter(adapter);
     }
@@ -119,6 +126,4 @@ public class DisplayAllProjects extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

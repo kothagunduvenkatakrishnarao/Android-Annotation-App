@@ -4,7 +4,15 @@ public class UserScore {
     private double score;
     private String userEmail;
     private String enrolledProjects;
+    private String objectId;
 
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
     public double getScore() {
         return score;
     }
